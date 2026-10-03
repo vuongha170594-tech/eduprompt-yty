@@ -7,7 +7,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# 2. Trang trí Giao diện CSS Nâng cao: Tối ưu Độ Tương Phản & Chữ Sắc Nét
+# 2. Trang trí Giao diện CSS Nâng cao: Tối ưu Tách Khung & Nổi Bật Nút Copy
 st.markdown("""
 <style>
     /* Nền toàn trang web: Dải màu Gradient Chuyên nghiệp */
@@ -23,9 +23,36 @@ st.markdown("""
         padding-bottom: 3rem;
     }
 
-    /* Banner Tiêu đề Đầu trang nổi bật */
+    /* KHUNG 1: Thông tin Sáng kiến & Tác giả */
+    .info-banner {
+        background: linear-gradient(135deg, #FFFFFF 0%, #F0FDFA 100%);
+        border-radius: 16px;
+        padding: 18px 20px;
+        text-align: center;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        margin-bottom: 18px;
+        border: 2px solid #0D9488;
+    }
+
+    .info-banner .sub-title {
+        color: #0F766E;
+        font-size: 0.95rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 6px;
+    }
+
+    .info-banner .author-title {
+        color: #0369A1;
+        font-size: 1.15rem;
+        font-weight: 800;
+        margin: 0;
+    }
+
+    /* KHUNG 2: Banner Tiêu đề EDUPROMPT Y TÝ */
     .header-banner {
-        background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+        background: linear-gradient(135deg, #FFFFFF 0%, #FFFBEB 100%);
         border-radius: 20px;
         padding: 25px 20px;
         text-align: center;
@@ -33,27 +60,11 @@ st.markdown("""
         margin-bottom: 30px;
         border: 3px solid #F59E0B;
     }
-    
-    .header-banner .sub-title {
-        color: #D97706;
-        font-size: 0.95rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 6px;
-    }
-
-    .header-banner .author-title {
-        color: #0284C7;
-        font-size: 1.1rem;
-        font-weight: 800;
-        margin-bottom: 12px;
-    }
 
     .header-banner h1 {
         color: #1E3A8A !important;
         font-weight: 900;
-        font-size: 2.2rem;
+        font-size: 2.3rem;
         margin: 0;
     }
     
@@ -114,6 +125,22 @@ st.markdown("""
         box-shadow: 0 12px 30px rgba(16, 185, 129, 0.7);
     }
 
+    /* Khung Hướng dẫn Copy Nổi Bật */
+    .copy-instruction-box {
+        background-color: #FEF3C7;
+        border: 2px dashed #D97706;
+        border-radius: 12px;
+        padding: 12px 18px;
+        margin-top: 15px;
+        margin-bottom: 10px;
+        color: #92400E;
+        font-weight: 800;
+        font-size: 1.05rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
     /* Khung Mẹo & Hướng dẫn Nổi bật Chữ Đậm Rõ */
     .tip-box {
         background-color: #FFFFFF !important;
@@ -147,17 +174,23 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# 3. Banner Tiêu đề Đầu trang (Thêm Tên Tác Giả & Trường)
+# 3. KHUNG 1: THÔNG TIN SÁNG KIẾN & TÁC GIẢ
 st.markdown("""
-<div class='header-banner'>
+<div class='info-banner'>
     <div class='sub-title'>✨ Mô hình Sáng kiến Chuyển đổi số & Đổi mới Sáng tạo Giáo dục - Xã Y Tý, 2026</div>
     <div class='author-title'>👩‍🏫 Ứng dụng của cô Vương Thị Hà - Giáo viên trường PTNT TH&THCS Y TÝ</div>
+</div>
+""", unsafe_allow_html=True)
+
+# 4. KHUNG 2: BANNER TÊN ỨNG DỤNG EDUPROMPT Y TÝ
+st.markdown("""
+<div class='header-banner'>
     <h1>🏔️ EDUPROMPT Y TÝ</h1>
     <p>🎓 Trợ lý AI: Tạo Prompt Thiết kế Infographic & Poster Giáo dục Rực rỡ</p>
 </div>
 """, unsafe_allow_html=True)
 
-# 4. Các Khung Nhập Liệu 1 đến 7
+# 5. Các Khung Nhập Liệu 1 đến 7
 
 # --- MỤC 1 ---
 st.markdown("<div class='card-box'><div class='section-header sh-1'>📌 1. Nội dung / Ý nghĩa Infographic hoặc Poster (*)</div>", unsafe_allow_html=True)
@@ -263,7 +296,7 @@ khoi_lop_chon = st.selectbox("Chọn khối lớp / đối tượng:", list(khoi
 khoi_lop_en = khoi_lop_dict[khoi_lop_chon]
 st.markdown("</div>", unsafe_allow_html=True)
 
-# 5. Nút Bấm & Kết Quả Đầu Ra
+# 6. Nút Bấm & Kết Quả Đầu Ra
 st.markdown("<br>", unsafe_allow_html=True)
 if st.button("🚀 XUẤT PROMPT TIẾNG ANH CHUYÊN NGHIỆP", type="primary"):
     if not noi_dung.strip():
@@ -281,7 +314,15 @@ if st.button("🚀 XUẤT PROMPT TIẾNG ANH CHUYÊN NGHIỆP", type="primary"):
 
         st.success("🎉 Tạo thành công! Dưới đây là Prompt Tiếng Anh chuẩn dành cho các AI vẽ ảnh:")
         
-        # Hiển thị Prompt trong khung code có nút copy
+        # Hướng dẫn bấm Copy trực quan nổi bật
+        st.markdown("""
+        <div class='copy-instruction-box'>
+            <span>📋 CÂU LỆNH ĐÃ SẴN SÀNG</span>
+            <span>👉 BẤM VÀO BIỂU TƯỢNG O VÀO GÓC TRÊN BÊN PHẢI NĂM TRONG Ô ĐEN DƯỚI ĐÂY ĐỂ COPY LỆNH 👈</span>
+        </div>
+        """, unsafe_allow_html=True)
+
+        # Hiển thị Prompt trong khung code
         st.code(prompt_en_final, language="text")
 
         # Khung Mẹo & Đường Link Nổi Bật Sắc Nét
@@ -289,7 +330,7 @@ if st.button("🚀 XUẤT PROMPT TIẾNG ANH CHUYÊN NGHIỆP", type="primary"):
         <div class='tip-box'>
             <h3>💡 MẸO & HƯỚNG DẪN SỬ DỤNG LỆNH PROMPT</h3>
             <ol>
-                <li><b>Sao chép câu lệnh</b>: Bấm vào icon <b>Copy</b> ở góc trên bên phải của ô màu xám đen chứa đoạn mã Tiếng Anh ở trên.</li>
+                <li><b>Sao chép câu lệnh</b>: Bấm vào biểu tượng <b>Copy</b> ở góc trên bên phải của ô màu xám đen chứa đoạn mã Tiếng Anh ở trên.</li>
                 <li><b>Bấm vào các liên kết ứng dụng bên dưới để dán câu lệnh tạo ảnh:</b>
                     <ul>
                         <li><a href="https://chatgpt.com" target="_blank">🤖 ChatGPT (OpenAI)</a> - Trò chuyện và yêu cầu tạo ảnh Infographic trực tiếp.</li>
