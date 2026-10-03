@@ -7,16 +7,16 @@ st.set_page_config(
     layout="wide"
 )
 
-# 2. Trang trí Giao diện CSS Nâng cao: Nền Gradient Sắc Nét & Khung Thẻ Rực Rỡ
+# 2. Trang trí Giao diện CSS Nâng cao: Tối ưu Độ Tương Phản & Chữ Sắc Nét
 st.markdown("""
 <style>
-    /* Nền toàn trang web: Dải màu Gradient Chuyên nghiệp, Đậm nét & Hiện đại */
+    /* Nền toàn trang web: Dải màu Gradient Chuyên nghiệp */
     .stApp {
         background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 40%, #0284C7 80%, #0D9488 100%);
         background-attachment: fixed;
     }
 
-    /* Giới hạn độ rộng khối nội dung chính ở giữa để căn chỉnh cân đối */
+    /* Giới hạn độ rộng khối nội dung chính ở giữa */
     .main .block-container {
         max-width: 950px;
         padding-top: 2rem;
@@ -25,19 +25,35 @@ st.markdown("""
 
     /* Banner Tiêu đề Đầu trang nổi bật */
     .header-banner {
-        background: linear-gradient(135deg, #FFFFFF 0%, #F1F5F9 100%);
+        background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
         border-radius: 20px;
-        padding: 25px;
+        padding: 25px 20px;
         text-align: center;
         box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         margin-bottom: 30px;
         border: 3px solid #F59E0B;
     }
     
+    .header-banner .sub-title {
+        color: #D97706;
+        font-size: 0.95rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 6px;
+    }
+
+    .header-banner .author-title {
+        color: #0284C7;
+        font-size: 1.1rem;
+        font-weight: 800;
+        margin-bottom: 12px;
+    }
+
     .header-banner h1 {
         color: #1E3A8A !important;
         font-weight: 900;
-        font-size: 2.3rem;
+        font-size: 2.2rem;
         margin: 0;
     }
     
@@ -49,7 +65,7 @@ st.markdown("""
         font-weight: 700;
     }
 
-    /* Phong cách Khung Thẻ (Card) Cao Cấp, Màu Sắc Nổi Bật */
+    /* Phong cách Khung Thẻ (Card) Cao Cấp */
     .card-box {
         background: #FFFFFF;
         border-radius: 16px;
@@ -59,7 +75,7 @@ st.markdown("""
         border: 2px solid #E2E8F0;
     }
 
-    /* Tiêu đề từng mục có nền màu sắc riêng rực rỡ */
+    /* Tiêu đề từng mục */
     .section-header {
         font-weight: 800;
         font-size: 1.15rem;
@@ -71,13 +87,13 @@ st.markdown("""
         align-items: center;
     }
 
-    .sh-1 { background: linear-gradient(135deg, #EF4444, #DC2626); } /* Đỏ */
-    .sh-2 { background: linear-gradient(135deg, #F59E0B, #D97706); } /* Cam vàng */
-    .sh-3 { background: linear-gradient(135deg, #10B981, #059669); } /* Xanh lá */
-    .sh-4 { background: linear-gradient(135deg, #3B82F6, #2563EB); } /* Xanh dương */
-    .sh-5 { background: linear-gradient(135deg, #8B5CF6, #7C3AED); } /* Tím */
-    .sh-6 { background: linear-gradient(135deg, #EC4899, #DB2777); } /* Hồng */
-    .sh-7 { background: linear-gradient(135deg, #06B6D4, #0891B2); } /* Xanh ngọc */
+    .sh-1 { background: linear-gradient(135deg, #EF4444, #DC2626); }
+    .sh-2 { background: linear-gradient(135deg, #F59E0B, #D97706); }
+    .sh-3 { background: linear-gradient(135deg, #10B981, #059669); }
+    .sh-4 { background: linear-gradient(135deg, #3B82F6, #2563EB); }
+    .sh-5 { background: linear-gradient(135deg, #8B5CF6, #7C3AED); }
+    .sh-6 { background: linear-gradient(135deg, #EC4899, #DB2777); }
+    .sh-7 { background: linear-gradient(135deg, #06B6D4, #0891B2); }
 
     /* Nút bấm Tạo Prompt rực rỡ */
     .stButton>button {
@@ -97,14 +113,47 @@ st.markdown("""
         transform: scale(1.02);
         box-shadow: 0 12px 30px rgba(16, 185, 129, 0.7);
     }
+
+    /* Khung Mẹo & Hướng dẫn Nổi bật Chữ Đậm Rõ */
+    .tip-box {
+        background-color: #FFFFFF !important;
+        color: #0F172A !important;
+        border-radius: 16px;
+        padding: 24px;
+        border: 3px solid #F59E0B;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        margin-top: 25px;
+    }
+    
+    .tip-box h3 {
+        color: #B45309 !important;
+        font-weight: 800;
+        margin-top: 0;
+        font-size: 1.3rem;
+    }
+
+    .tip-box ol {
+        color: #1E293B !important;
+        font-weight: 600;
+        font-size: 1.05rem;
+        line-height: 1.8;
+    }
+
+    .tip-box a {
+        color: #0284C7 !important;
+        font-weight: 700;
+        text-decoration: underline;
+    }
 </style>
 """, unsafe_allow_html=True)
 
-# 3. Banner Tiêu đề Đầu trang
+# 3. Banner Tiêu đề Đầu trang (Thêm Tên Tác Giả & Trường)
 st.markdown("""
 <div class='header-banner'>
-    <h1>🏔️️ EDUPROMPT Y TÝ</h1>
-    <p>🎓 Trợ lý AI Chuyển đổi Số: Tạo Prompt Thiết kế Infographic & Poster Giáo dục</p>
+    <div class='sub-title'>✨ Mô hình Sáng kiến Chuyển đổi số & Đổi mới Sáng tạo Giáo dục - Xã Y Tý, 2026</div>
+    <div class='author-title'>👩‍🏫 Ứng dụng của cô Vương Thị Hà - Giáo viên trường PTNT TH&THCS Y TÝ</div>
+    <h1>🏔️ EDUPROMPT Y TÝ</h1>
+    <p>🎓 Trợ lý AI: Tạo Prompt Thiết kế Infographic & Poster Giáo dục Rực rỡ</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -207,9 +256,10 @@ khoi_lop_dict = {
     "THCS: Lớp 6 (Khởi đầu cấp 2, hiện đại, sinh động)": "6th-grade middle school students (aged 11), modern educational chart",
     "THCS: Lớp 7 (Khoa học, tư duy hình học / hệ thống)": "7th-grade middle school students (aged 12), structured academic graphic",
     "THCS: Lớp 8 (Chi tiết, chuẩn kiến thức phổ thông)": "8th-grade middle school students (aged 13), detailed scientific infographic",
-    "THCS: Lớp 9 (Chuyên sâu, hiện đại, phục vụ ôn tập)": "9th-grade middle school students (aged 14), comprehensive study poster"
+    "THCS: Lớp 9 (Chuyên sâu, hiện đại, phục vụ ôn tập)": "9th-grade middle school students (aged 14), comprehensive study poster",
+    "Tuyên truyền cộng đồng / Mọi độ tuổi người dân (Dễ hiểu, trực quan, thân thiện)": "general public and local community, universal highly visual friendly design"
 }
-khoi_lop_chon = st.selectbox("Chọn khối lớp:", list(khoi_lop_dict.keys()), label_visibility="collapsed")
+khoi_lop_chon = st.selectbox("Chọn khối lớp / đối tượng:", list(khoi_lop_dict.keys()), label_visibility="collapsed")
 khoi_lop_en = khoi_lop_dict[khoi_lop_chon]
 st.markdown("</div>", unsafe_allow_html=True)
 
@@ -229,21 +279,31 @@ if st.button("🚀 XUẤT PROMPT TIẾNG ANH CHUYÊN NGHIỆP", type="primary"):
             f"high resolution, 8k quality --ar {ar_param}"
         )
 
-        st.success("🎉 Tạo thành công! Dưới đây là Prompt Tiếng Anh chuẩn dành cho các AI vẽ ảnh (Canva AI, Midjourney, Bing Image Creator, DALL-E 3):")
+        st.success("🎉 Tạo thành công! Dưới đây là Prompt Tiếng Anh chuẩn dành cho các AI vẽ ảnh:")
         
         # Hiển thị Prompt trong khung code có nút copy
         st.code(prompt_en_final, language="text")
 
-        # Khung Mẹo & Lưu Ý Sử Dụng
-        st.info("""
-        💡 **MẸO & HƯỚNG DẪN SỬ DỤNG LỆNH:**
-        1. **Cách sao chép**: Bấm vào biểu tượng **Copy** (ở góc trên bên phải của khung câu lệnh màu đen ở trên).
-        2. **Dán câu lệnh**: 
-           - **Bing Image Creator / Microsoft Designer** (Miễn phí): Dán trực tiếp câu lệnh vào ô mô tả để tạo ảnh tức thì.
-           - **ChatGPT / Canva AI / Midjourney**: Dán câu lệnh vào ô trò chuyện để AI tự động vẽ tranh/infographic theo đúng chuẩn cấu trúc cô đã chọn.
-        3. **Tùy chỉnh**: Cô có thể thay đổi lại các mục 1–7 ở trên để tạo ra các biến thể thiết kế khác nhau chỉ trong vài giây!
-        """)
+        # Khung Mẹo & Đường Link Nổi Bật Sắc Nét
+        st.markdown("""
+        <div class='tip-box'>
+            <h3>💡 MẸO & HƯỚNG DẪN SỬ DỤNG LỆNH PROMPT</h3>
+            <ol>
+                <li><b>Sao chép câu lệnh</b>: Bấm vào icon <b>Copy</b> ở góc trên bên phải của ô màu xám đen chứa đoạn mã Tiếng Anh ở trên.</li>
+                <li><b>Bấm vào các liên kết ứng dụng bên dưới để dán câu lệnh tạo ảnh:</b>
+                    <ul>
+                        <li><a href="https://chatgpt.com" target="_blank">🤖 ChatGPT (OpenAI)</a> - Trò chuyện và yêu cầu tạo ảnh Infographic trực tiếp.</li>
+                        <li><a href="https://gemini.google.com" target="_blank">✨ Google Gemini</a> - Công cụ AI đa năng hỗ trợ vẽ ảnh giáo dục.</li>
+                        <li><a href="https://www.canva.com" target="_blank">🎨 Canva AI (Magic Media)</a> - Dán prompt vào mục Tạo ảnh tự động của Canva.</li>
+                        <li><a href="https://www.bing.com/images/create" target="_blank">🖼 Bing Image Creator</a> - Công cụ tạo ảnh DALL-E 3 hoàn toàn miễn phí.</li>
+                        <li><a href="https://designer.microsoft.com" target="_blank">🎯 Microsoft Designer</a> - Thiết kế Poster & Infographic chuyên nghiệp.</li>
+                    </ul>
+                </li>
+                <li><b>Mẹo nhỏ:</b> Cô có thể thử đổi lại các thông số ở Mục 2 (Hình thức) hoặc Mục 4 (Phong cách) để tạo ra nhiều phương án ảnh phong phú khác nhau!</li>
+            </ol>
+        </div>
+        """, unsafe_allow_html=True)
 
 # Chân trang
 st.markdown("<hr>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: #F1F5F9; font-weight: 600;'>✨ Mô hình Sáng kiến Chuyển đổi số & Đổi mới Sáng tạo Giáo dục - Xã Y Tý, 2026.</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #F1F5F9; font-weight: 600;'>Ứng dụng hỗ trợ giảng dạy trực quan - Trường PTNT TH&THCS Y Tý</p>", unsafe_allow_html=True)
