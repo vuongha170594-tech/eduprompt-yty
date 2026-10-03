@@ -1,110 +1,101 @@
 import streamlit as st
 
-# 1. Cấu hình trang (Mở rộng tràn màn hình rộng để hình nền tràn 2 bên)
+# 1. Cấu hình trang
 st.set_page_config(
     page_title="EduPrompt Y Tý - Trợ lý Tạo Prompt Infographic",
     page_icon="🎨",
     layout="wide"
 )
 
-# 2. Trang trí Giao diện CSS Nâng cao: Nền Ruộng Bậc Thang Y Tý Rực Rỡ & Khung Gradient
+# 2. Trang trí Giao diện CSS Nâng cao: Nền Gradient Sắc Nét & Khung Thẻ Rực Rỡ
 st.markdown("""
 <style>
-    /* Nền toàn trang web: Cảnh sắc Ruộng Bậc Thang Y Tý tươi sáng, rực rỡ */
+    /* Nền toàn trang web: Dải màu Gradient Chuyên nghiệp, Đậm nét & Hiện đại */
     .stApp {
-        background: linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75)), 
-                    url('https://images.unsplash.com/photo-1544644181-1484b3fdfc62?q=80&w=1920');
-        background-size: cover;
-        background-position: center;
+        background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 40%, #0284C7 80%, #0D9488 100%);
         background-attachment: fixed;
     }
 
-    /* Giới hạn độ rộng khối nội dung chính ở giữa để dễ nhìn */
+    /* Giới hạn độ rộng khối nội dung chính ở giữa để căn chỉnh cân đối */
     .main .block-container {
-        max-width: 900px;
+        max-width: 950px;
         padding-top: 2rem;
         padding-bottom: 3rem;
     }
 
-    /* Khung Tiêu đề Banner Hoành tráng */
+    /* Banner Tiêu đề Đầu trang nổi bật */
     .header-banner {
-        background: linear-gradient(135deg, #0284C7 0%, #0D9488 50%, #16A34A 100%);
+        background: linear-gradient(135deg, #FFFFFF 0%, #F1F5F9 100%);
         border-radius: 20px;
-        padding: 25px 20px;
+        padding: 25px;
         text-align: center;
-        color: white;
-        box-shadow: 0 10px 25px rgba(13, 148, 136, 0.3);
-        margin-bottom: 25px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        margin-bottom: 30px;
+        border: 3px solid #F59E0B;
     }
     
     .header-banner h1 {
-        color: #FFFFFF !important;
+        color: #1E3A8A !important;
         font-weight: 900;
-        font-size: 2.2rem;
+        font-size: 2.3rem;
         margin: 0;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
     }
     
     .header-banner p {
-        color: #F0FDFA;
-        font-size: 1.1rem;
+        color: #059669;
+        font-size: 1.15rem;
         margin-top: 8px;
         margin-bottom: 0;
-        font-weight: 500;
+        font-weight: 700;
     }
 
     /* Phong cách Khung Thẻ (Card) Cao Cấp, Màu Sắc Nổi Bật */
     .card-box {
         background: #FFFFFF;
         border-radius: 16px;
-        padding: 20px 24px;
-        margin-bottom: 20px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        padding: 22px 25px;
+        margin-bottom: 22px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
         border: 2px solid #E2E8F0;
-        transition: all 0.3s ease;
     }
 
-    .card-box:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
-    }
-
-    /* Màu viền trái và icon cho từng mục */
-    .card-1 { border-left: 8px solid #EF4444; } /* Đỏ tươi */
-    .card-2 { border-left: 8px solid #F59E0B; } /* Cam vàng */
-    .card-3 { border-left: 8px solid #10B981; } /* Xanh lá */
-    .card-4 { border-left: 8px solid #3B82F6; } /* Xanh dương */
-    .card-5 { border-left: 8px solid #8B5CF6; } /* Tím đậm */
-    .card-6 { border-left: 8px solid #EC4899; } /* Hồng rực */
-    .card-7 { border-left: 8px solid #06B6D4; } /* Xanh ngọc */
-
-    /* Tiêu đề từng mục */
-    .section-title {
+    /* Tiêu đề từng mục có nền màu sắc riêng rực rỡ */
+    .section-header {
         font-weight: 800;
         font-size: 1.15rem;
-        color: #1E293B;
-        margin-bottom: 12px;
+        color: #FFFFFF;
+        padding: 10px 16px;
+        border-radius: 10px;
+        margin-bottom: 15px;
         display: flex;
         align-items: center;
     }
 
+    .sh-1 { background: linear-gradient(135deg, #EF4444, #DC2626); } /* Đỏ */
+    .sh-2 { background: linear-gradient(135deg, #F59E0B, #D97706); } /* Cam vàng */
+    .sh-3 { background: linear-gradient(135deg, #10B981, #059669); } /* Xanh lá */
+    .sh-4 { background: linear-gradient(135deg, #3B82F6, #2563EB); } /* Xanh dương */
+    .sh-5 { background: linear-gradient(135deg, #8B5CF6, #7C3AED); } /* Tím */
+    .sh-6 { background: linear-gradient(135deg, #EC4899, #DB2777); } /* Hồng */
+    .sh-7 { background: linear-gradient(135deg, #06B6D4, #0891B2); } /* Xanh ngọc */
+
     /* Nút bấm Tạo Prompt rực rỡ */
     .stButton>button {
         width: 100%;
-        background: linear-gradient(135deg, #16A34A 0%, #0D9488 50%, #0284C7 100%);
+        background: linear-gradient(135deg, #10B981 0%, #059669 50%, #047857 100%);
         color: white !important;
-        font-weight: 800;
-        font-size: 1.25rem;
-        padding: 15px 25px;
+        font-weight: 900;
+        font-size: 1.3rem;
+        padding: 16px 25px;
         border-radius: 14px;
-        border: none;
-        box-shadow: 0 8px 20px rgba(13, 148, 136, 0.4);
+        border: 2px solid #F59E0B;
+        box-shadow: 0 8px 25px rgba(16, 185, 129, 0.5);
         transition: all 0.3s ease;
     }
     
     .stButton>button:hover {
         transform: scale(1.02);
-        box-shadow: 0 12px 28px rgba(13, 148, 136, 0.5);
+        box-shadow: 0 12px 30px rgba(16, 185, 129, 0.7);
     }
 </style>
 """, unsafe_allow_html=True)
@@ -112,15 +103,15 @@ st.markdown("""
 # 3. Banner Tiêu đề Đầu trang
 st.markdown("""
 <div class='header-banner'>
-    <h1>🏔️ EDUPROMPT Y TÝ</h1>
-    <p>🎓 Trợ lý AI Chuyển đổi Số: Tạo Prompt Thiết kế Infographic & Poster Giáo dục Rực rỡ</p>
+    <h1>🏔️️ EDUPROMPT Y TÝ</h1>
+    <p>🎓 Trợ lý AI Chuyển đổi Số: Tạo Prompt Thiết kế Infographic & Poster Giáo dục</p>
 </div>
 """, unsafe_allow_html=True)
 
-# 4. Các Khung Nhập Liệu
+# 4. Các Khung Nhập Liệu 1 đến 7
 
 # --- MỤC 1 ---
-st.markdown("<div class='card-box card-1'><div class='section-title'>📌 1. Nội dung / Ý nghĩa Infographic hoặc Poster (*)</div>", unsafe_allow_html=True)
+st.markdown("<div class='card-box'><div class='section-header sh-1'>📌 1. Nội dung / Ý nghĩa Infographic hoặc Poster (*)</div>", unsafe_allow_html=True)
 noi_dung = st.text_area(
     "Nhập nội dung bài học:",
     placeholder="Ví dụ: Vòng tuần hoàn của nước trong tự nhiên, Các hệ thức lượng trong tam giác, Quy trình rửa tay 6 bước...",
@@ -129,7 +120,7 @@ noi_dung = st.text_area(
 st.markdown("</div>", unsafe_allow_html=True)
 
 # --- MỤC 2 ---
-st.markdown("<div class='card-box card-2'><div class='section-title'>📐 2. Hình thức thể hiện (Layout)</div>", unsafe_allow_html=True)
+st.markdown("<div class='card-box'><div class='section-header sh-2'>📐 2. Hình thức thể hiện (Layout)</div>", unsafe_allow_html=True)
 hinh_thuc = st.selectbox(
     "Chọn cấu trúc hiển thị:",
     [
@@ -146,7 +137,7 @@ hinh_thuc = st.selectbox(
 st.markdown("</div>", unsafe_allow_html=True)
 
 # --- MỤC 3 ---
-st.markdown("<div class='card-box card-3'><div class='section-title'>🖼️ 3. Kích thước / Tỷ lệ khung hình (Aspect Ratio)</div>", unsafe_allow_html=True)
+st.markdown("<div class='card-box'><div class='section-header sh-3'>🖼️ 3. Kích thước / Tỷ lệ khung hình (Aspect Ratio)</div>", unsafe_allow_html=True)
 kich_thuoc_dict = {
     "16:9 (Ngang - Slide bài giảng, Máy chiếu, TV, Youtube)": ("16:9", "16:9"),
     "9:16 (Dọc - Màn hình điện thoại, TikTok, Reels, Story)": ("9:16", "9:16"),
@@ -159,7 +150,7 @@ ar_str, ar_param = kich_thuoc_dict[kich_thuoc_chon]
 st.markdown("</div>", unsafe_allow_html=True)
 
 # --- MỤC 4 ---
-st.markdown("<div class='card-box card-4'><div class='section-title'>🎨 4. Phong cách nghệ thuật (Art Style)</div>", unsafe_allow_html=True)
+st.markdown("<div class='card-box'><div class='section-header sh-4'>🎨 4. Phong cách nghệ thuật (Art Style)</div>", unsafe_allow_html=True)
 phong_cach_options = [
     "3D Claymation (Đắp nổi đất nặn ngộ nghĩnh, nổi bật)",
     "2D Vector phẳng, hiện đại, tối giản",
@@ -177,7 +168,7 @@ else:
 st.markdown("</div>", unsafe_allow_html=True)
 
 # --- MỤC 5 ---
-st.markdown("<div class='card-box card-5'><div class='section-title'>⛰️ 5. Dấu ấn Văn hóa / Vùng miền (Tùy chọn đặc sắc)</div>", unsafe_allow_html=True)
+st.markdown("<div class='card-box'><div class='section-header sh-5'>⛰️ 5. Dấu ấn Văn hóa / Vùng miền (Tùy chọn đặc sắc)</div>", unsafe_allow_html=True)
 van_hoa_options = {
     "Mặc định (Trung tính, không yêu cầu vùng miền)": "",
     "Văn hóa & Cảnh quan Tây Bắc / Y Tý (Ruộng bậc thang vàng óng, trang phục Mông/Hà Nhì, mây vờn núi)": "incorporating Northwest Vietnam mountain culture, golden terraced rice fields, foggy Y Ty scenery, vibrant ethnic motifs",
@@ -189,7 +180,7 @@ van_hoa_str = van_hoa_options[van_hoa_chon]
 st.markdown("</div>", unsafe_allow_html=True)
 
 # --- MỤC 6 ---
-st.markdown("<div class='card-box card-6'><div class='section-title'>✨ 6. Trạng thái & Sắc thái màu sắc (Mood & Tone)</div>", unsafe_allow_html=True)
+st.markdown("<div class='card-box'><div class='section-header sh-6'>✨ 6. Trạng thái & Sắc thái màu sắc (Mood & Tone)</div>", unsafe_allow_html=True)
 trang_thai_options = [
     "Tươi sáng & Đáng yêu (Bright, cheerful & cute)",
     "Sinh động & Vui tươi (Vibrant & energetic)",
@@ -205,7 +196,7 @@ else:
 st.markdown("</div>", unsafe_allow_html=True)
 
 # --- MỤC 7 ---
-st.markdown("<div class='card-box card-7'><div class='section-title'>🎓 7. Độ tuổi & Khối lớp mục tiêu (Target Audience)</div>", unsafe_allow_html=True)
+st.markdown("<div class='card-box'><div class='section-header sh-7'>🎓 7. Độ tuổi & Khối lớp mục tiêu (Target Audience)</div>", unsafe_allow_html=True)
 khoi_lop_dict = {
     "Mầm non / Tiền tiểu học (Hình ảnh cực to, ngộ nghĩnh, rất ít chữ)": "kindergarten pupils, extremely simple visuals, cute icons, bold lines",
     "Tiểu học: Lớp 1 (Trực quan, hình ảnh to, đơn giản)": "1st-grade primary students (aged 6), simple bright visual diagram",
@@ -239,8 +230,20 @@ if st.button("🚀 XUẤT PROMPT TIẾNG ANH CHUYÊN NGHIỆP", type="primary"):
         )
 
         st.success("🎉 Tạo thành công! Dưới đây là Prompt Tiếng Anh chuẩn dành cho các AI vẽ ảnh (Canva AI, Midjourney, Bing Image Creator, DALL-E 3):")
+        
+        # Hiển thị Prompt trong khung code có nút copy
         st.code(prompt_en_final, language="text")
+
+        # Khung Mẹo & Lưu Ý Sử Dụng
+        st.info("""
+        💡 **MẸO & HƯỚNG DẪN SỬ DỤNG LỆNH:**
+        1. **Cách sao chép**: Bấm vào biểu tượng **Copy** (ở góc trên bên phải của khung câu lệnh màu đen ở trên).
+        2. **Dán câu lệnh**: 
+           - **Bing Image Creator / Microsoft Designer** (Miễn phí): Dán trực tiếp câu lệnh vào ô mô tả để tạo ảnh tức thì.
+           - **ChatGPT / Canva AI / Midjourney**: Dán câu lệnh vào ô trò chuyện để AI tự động vẽ tranh/infographic theo đúng chuẩn cấu trúc cô đã chọn.
+        3. **Tùy chỉnh**: Cô có thể thay đổi lại các mục 1–7 ở trên để tạo ra các biến thể thiết kế khác nhau chỉ trong vài giây!
+        """)
 
 # Chân trang
 st.markdown("<hr>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center; color: #475569;'>✨ Mô hình Sáng kiến Chuyển đổi số & Đổi mới Sáng tạo Giáo dục - Xã Y Tý, 2026.</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; color: #F1F5F9; font-weight: 600;'>✨ Mô hình Sáng kiến Chuyển đổi số & Đổi mới Sáng tạo Giáo dục - Xã Y Tý, 2026.</p>", unsafe_allow_html=True)
