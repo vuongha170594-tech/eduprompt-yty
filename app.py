@@ -7,7 +7,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# 2. Trang trí Giao diện CSS Nâng cao: Tối ưu Tách Khung & Nổi Bật Nút Copy
+# 2. Trang trí Giao diện CSS Nâng cao
 st.markdown("""
 <style>
     /* Nền toàn trang web: Dải màu Gradient Chuyên nghiệp */
@@ -23,31 +23,29 @@ st.markdown("""
         padding-bottom: 3rem;
     }
 
-    /* KHUNG 1: Thông tin Sáng kiến & Tác giả */
-    .info-banner {
-        background: linear-gradient(135deg, #FFFFFF 0%, #F0FDFA 100%);
-        border-radius: 16px;
-        padding: 18px 20px;
+    /* BỎ KHUNG 1: Dòng chữ Nổi Trực Tiếp trên Nền Gradient */
+    .borderless-info-header {
         text-align: center;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-        margin-bottom: 18px;
-        border: 2px solid #0D9488;
+        margin-bottom: 25px;
+        padding: 10px;
     }
 
-    .info-banner .sub-title {
-        color: #0F766E;
-        font-size: 0.95rem;
+    .borderless-info-header .sub-title {
+        color: #FDE047; /* Màu vàng tươi nổi bật trên nền xanh */
+        font-size: 1.05rem;
         font-weight: 800;
         text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin-bottom: 6px;
+        letter-spacing: 0.8px;
+        margin-bottom: 8px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
     }
 
-    .info-banner .author-title {
-        color: #0369A1;
-        font-size: 1.15rem;
+    .borderless-info-header .author-title {
+        color: #FFFFFF; /* Màu trắng sắc nét */
+        font-size: 1.25rem;
         font-weight: 800;
         margin: 0;
+        text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
     }
 
     /* KHUNG 2: Banner Tiêu đề EDUPROMPT Y TÝ */
@@ -174,15 +172,15 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# 3. KHUNG 1: THÔNG TIN SÁNG KIẾN & TÁC GIẢ
+# 3. PHẦN THÔNG TIN TÁC GIẢ & SÁNG KIẾN (NỔI TRÊN NỀN - BỎ KHUNG)
 st.markdown("""
-<div class='info-banner'>
-    <div class='sub-title'>✨ Mô hình Sáng kiến Chuyển đổi số & Đổi mới Sáng tạo Giáo dục - Xã Y Tý, 2026</div>
-    <div class='author-title'>👩‍🏫 Ứng dụng của cô Vương Thị Hà - Giáo viên trường PTNT TH&THCS Y TÝ</div>
+<div class='borderless-info-header'>
+    <div class='sub-title'>✨ Mô hình sáng kiến chuyển đổi số và đổi mới sáng tạo giáo dục xã Y Tý, 2026 ✨</div>
+    <div class='author-title'>👩‍🏫 Ứng dụng của cô Vương Thị Hà - Giáo viên trường PTNT TH&THCS Y TÝ 🏫</div>
 </div>
 """, unsafe_allow_html=True)
 
-# 4. KHUNG 2: BANNER TÊN ỨNG DỤNG EDUPROMPT Y TÝ
+# 4. KHUNG BANNER TÊN ỨNG DỤNG EDUPROMPT Y TÝ
 st.markdown("""
 <div class='header-banner'>
     <h1>🏔️ EDUPROMPT Y TÝ</h1>
@@ -318,7 +316,7 @@ if st.button("🚀 XUẤT PROMPT TIẾNG ANH CHUYÊN NGHIỆP", type="primary"):
         st.markdown("""
         <div class='copy-instruction-box'>
             <span>📋 CÂU LỆNH ĐÃ SẴN SÀNG</span>
-            <span>👉 BẤM VÀO BIỂU TƯỢNG O VÀO GÓC TRÊN BÊN PHẢI NĂM TRONG Ô ĐEN DƯỚI ĐÂY ĐỂ COPY LỆNH 👈</span>
+            <span>👉 BẤM VÀO BIỂU TƯỢNG Ở GÓC TRÊN BÊN PHẢI NẰM TRONG Ô ĐEN DƯỚI ĐÂY ĐỂ COPY LỆNH 👈</span>
         </div>
         """, unsafe_allow_html=True)
 
