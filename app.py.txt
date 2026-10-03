@@ -1,0 +1,139 @@
+import streamlit as st
+
+# Cấu hình trang web
+st.set_page_config(
+    page_title="EduPrompt Y Tý - Trợ lý Tạo Prompt Infographic",
+    page_icon="🎨",
+    layout="centered"
+)
+
+# Tiêu đề và giới thiệu
+st.title("🎨 EduPrompt Y Tý")
+st.subheader("Trợ lý chuyển đổi số: Tạo Prompt thiết kế Infographic/Poster Dạy học")
+st.markdown("---")
+
+# Giao diện nhập liệu
+st.header("📋 Nhập thông tin thiết kế")
+
+# 1. Nội dung
+noi_dung = st.text_area(
+    "1. Nội dung / Ý nghĩa của Infographic hoặc Poster (*):",
+    placeholder="Ví dụ: Vòng tuần hoàn của nước trong tự nhiên, dạy môn Khoa học lớp 4..."
+)
+
+# 2. Hình thức
+hinh_thuc = st.selectbox(
+    "2. Hình thức thể hiện:",
+    [
+        "Sơ đồ tư duy (Mindmap)",
+        "Dòng thời gian (Timeline)",
+        "Quy trình / Sơ đồ vòng tròn",
+        "Bảng So sánh / Sơ đồ Venn",
+        "Tóm tắt kiến thức trọng tâm",
+        "Infographic giới thiệu / Liệt kê",
+        "Poster tuyên truyền / Thông điệp"
+    ]
+)
+
+# 3. Kích thước
+kich_thuoc_dict = {
+    "16:9 (Ngang - Slide, Máy chiếu, Youtube)": ("16:9", "16:9"),
+    "9:16 (Dọc - Điện thoại, TikTok, Reels)": ("9:16", "9:16"),
+    "4:3 (Ngang chuẩn)": ("4:3", "4:3"),
+    "3:4 (Dọc chuẩn)": ("3:4", "3:4"),
+    "1:1 (Hình vuông - Facebook, Zalo)": ("1:1", "1:1")
+}
+kich_thuoc_chon = st.selectbox("3. Kích thước / Tỷ lệ khung hình:", list(kich_thuoc_dict.keys()))
+ar_str, ar_param = kich_thuoc_dict[kich_thuoc_chon]
+
+# 4. Phong cách
+phong_cach_options = [
+    "3D Claymation (Đắp nổi đất nặn ngộ nghĩnh)",
+    "2D Vector phẳng, hiện đại",
+    "Trực quan hóa khoa học sinh động",
+    "Màu sáp / Màu nước học trò",
+    "Truyện tranh Việt Nam tươi sáng",
+    "Hiện đại & Công nghệ số",
+    "Khác (Tự nhập)"
+]
+phong_cach_chon = st.selectbox("4. Phong cách nghệ thuật:", phong_cach_options)
+if phong_cach_chon == "Khác (Tự nhập)":
+    phong_cach = st.text_input("Nhập phong cách riêng của bạn:", "Chibi đáng yêu")
+else:
+    phong_cach = phong_cach_chon
+
+# 5. Văn hóa / Vùng miền
+van_hoa = st.selectbox(
+    "5. Dấu ấn Văn hóa / Vùng miền (Tùy chọn):",
+    [
+        "Mặc định (Không yêu cầu đặc thù)",
+        "Văn hóa & Cảnh quan Tây Bắc / Y Tý (Ruộng bậc thang, trang phục dân tộc, hoa tớ dày...)",
+        "Nông thôn Việt Nam gần gũi, mộc mạc",
+        "Hiện đại & Toàn cầu"
+    ]
+)
+
+# 6. Trạng thái / Mood & Tone
+trang_thai_options = [
+    "Tươi sáng & Đáng yêu",
+    "Sinh động & Vui tươi",
+    "Nghiêm túc & Chuyên nghiệp",
+    "Ấm áp & Gần gũi",
+    "Khác (Tự nhập)"
+]
+trang_thai_chon = st.selectbox("6. Trạng thái / Sắc thái màu sắc:", trang_thai_options)
+if trang_thai_chon == "Khác (Tự nhập)":
+    trang_thai = st.text_input("Nhập trạng thái riêng:", "Huyền ảo, lung linh")
+else:
+    trang_thai = trang_thai_chon
+
+# 7. Khối lớp
+khoi_lop = st.selectbox(
+    "7. Độ tuổi / Khối lớp mục tiêu:",
+    [
+        "Học sinh Lớp 1 (Đơn giản, hình ảnh to, ít chữ)",
+        "Học sinh Lớp 2",
+        "Học sinh Lớp 3",
+        "Học sinh Lớp 4",
+        "Học sinh Lớp 5 (Chi tiết, khoa học, rõ ràng)",
+        "Mầm non / Tiền tiểu học"
+    ]
+)
+
+st.markdown("---")
+
+# Nút bấm tạo Prompt
+if st.button("🚀 BẮT ĐẦU TẠO PROMPT", type="primary"):
+    if not noi_dung.strip():
+        st.warning("⚠️ Vui lòng nhập nội dung Infographic/Poster ở Mục 1!")
+    else:
+        # Xử lý logic ghép văn bản
+        van_hoa_str = f" Mang dấu ấn {van_hoa}." if "Mặc định" not in van_hoa else ""
+        
+        # Prompt Tiếng Việt
+        prompt_vi = (
+            f"Tạo một thiết kế {hinh_thuc} về chủ đề: '{noi_dung}'. "
+            f"Thiết kế dành cho {khoi_lop}. "
+            f"Phong cách nghệ thuật: {phong_cach}. "
+            f"Tông màu và trạng thái: {trang_thai}.{van_hoa_str} "
+            f"Trình bày rõ ràng, dễ hiểu, màu sắc hài hòa, chuẩn thẩm mỹ giáo dục. "
+            f"Tỷ lệ khung hình {ar_str}."
+        )
+
+        # Prompt Tiếng Anh (Cho AI tạo ảnh chuyên sâu)
+        prompt_en = (
+            f"Educational {hinh_thuc} poster about '{noi_dung}', designed for {khoi_lop}. "
+            f"Art style: {phong_cach}, {trang_thai} mood, bright educational color palette. "
+            f"Clean layout, easy to understand, high quality illustration.{van_hoa_str} --ar {ar_param}"
+        )
+
+        st.success("🎉 Tạo Prompt thành công! Bạn hãy chép câu lệnh dưới đây để dán vào các AI vẽ ảnh (Canva, ChatGPT, Midjourney, Bing Creator...):")
+        
+        st.subheader("📌 Prompt Tiếng Việt (Dành cho Canva / ChatGPT / Gemini):")
+        st.code(prompt_vi, language="text")
+
+        st.subheader("🌐 Prompt Tiếng Anh (Dành cho Midjourney / Bing Image Creator / DALL-E):")
+        st.code(prompt_en, language="text")
+
+st.markdown("---")
+st.caption("Ứng dụng phục vụ Đổi mới sáng tạo & Chuyển đổi số trong Giáo dục Tiểu học - Xã Y Tý 2026.")
