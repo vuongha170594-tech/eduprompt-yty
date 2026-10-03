@@ -176,7 +176,7 @@ st.markdown("""
 st.markdown("""
 <div class='borderless-info-header'>
     <div class='sub-title'>✨ Mô hình sáng kiến chuyển đổi số và đổi mới sáng tạo giáo dục xã Y Tý, 2026 ✨</div>
-    <div class='author-title'>👩‍🏫 Ứng dụng của cô Vương Thị Hà - Giáo viên trường PTNT TH&THCS Y TÝ 🏫</div>
+    <div class='author-title'>👩‍🏫 Ứng dụng của cô Vương Thị Hà - Giáo viên Trường PTNT TH&THCS Y TÝ 🏫</div>
 </div>
 """, unsafe_allow_html=True)
 
